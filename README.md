@@ -1,10 +1,10 @@
 # Shape Detection Challenge Submission
 
-Hello. This project is my solution for the Shape Detection Challenge. All the original algorithm code is located in the `src/main.ts` file, inside the `ShapeDetector` class.
+This repository contains my submission for the Shape Detection Challenge. All the original algorithm code is located in the `src/main.ts` file, inside the `ShapeDetector` class.
 
 ## My Approach
 
-My algorithm works without any external libraries and uses a 4-step pipeline to find shapes:
+This algorithm works without any external libraries and uses a 4-step pipeline to find shapes:
 
 1.  **Binarize (Make Black & White):** First, the code reads the image and converts it to a simple black-and-white (0 or 1) grid. This is done using a grayscale conversion and a threshold value.
 2.  **Find Blobs (Find All Shapes):** Next, the code scans the black-and-white grid to find all groups of connected pixels. This uses a Breadth-First Search (BFS) algorithm. Each group is called a "blob."
@@ -24,7 +24,7 @@ My algorithm works without any external libraries and uses a 4-step pipeline to 
 
 My solution scores a high F1-Score (0.867) and passes almost all tests. There are two "failures" that I want to explain:
 
-* **`no_shapes.png` (F1 Score: 0.000):** This is not a bug in my code. My code correctly detects **0 shapes**. The evaluator script sees 0 detections and marks it as a failure, even though 0 is the correct answer.
+* **`no_shapes.png` (F1 Score: 0.000):** This is not a bug in my code. My code correctly detects **0 shapes**. The evaluation script sees 0 detections and marks it as a failure, even though 0 is the correct answer.
 * **Low Area Accuracy (e.g., Pentagon):** You will see low area scores for shapes with slanted edges. This is because:
     * My code calculates area by **counting the black pixels**.
     * The "answer key" uses a **math formula for a perfect shape**.
