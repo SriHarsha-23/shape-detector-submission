@@ -1,6 +1,6 @@
 # Shape Detection Challenge Submission
 
-This repository contains my submission for the Shape Detection Challenge. All the original algorithm code is located in the `src/main.ts` file, inside the `ShapeDetector` class.
+This project is my solution for the Shape Detection Challenge. All the original algorithm code is located in the `src/main.ts` file, inside the `ShapeDetector` class.
 
 ## My Approach
 
@@ -25,10 +25,10 @@ This algorithm works without any external libraries and uses a 4-step pipeline t
 My solution scores a high F1-Score (0.867) and passes almost all tests. There are two "failures" that I want to explain:
 
 * **`no_shapes.png` (F1 Score: 0.000):** This is not a bug in my code. My code correctly detects **0 shapes**. The evaluation script sees 0 detections and marks it as a failure, even though 0 is the correct answer.
-* **Low Area Accuracy (e.g., Pentagon):** You will see low area scores for shapes with slanted edges. This is because:
-    * My code calculates area by **counting the black pixels**.
-    * The "answer key" uses a **math formula for a perfect shape**.
-    * The "fuzzy" gray pixels (anti-aliasing) on the edges are not counted by my code, so my pixel area is smaller. This is expected. My 100% area score on the `rectangle_square` (which has no slanted edges) proves my area logic is correct.
+* **Low Area Accuracy (e.g., Pentagon):** The area scores for shapes with slanted edges (like the pentagon) are lower than the ground truth. This is an expected discrepancy arising from the two different ways of measuring area:
+    * My algorithm calculates the **physical area** by counting the exact 'shape' pixels.
+    * The answer key uses a **mathematical formula** for an ideal, perfect shape.
+    * **The 'fuzzy' gray anti-aliased pixels on slanted edges are not included in the pixel count, which naturally leads to a different value than the ideal geometric one.**
 
 ## Citation Note
 
